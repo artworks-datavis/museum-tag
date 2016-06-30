@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<link type="text/css" rel="stylesheet" href="CSS/stylesheet.css" />
-	</head>
-	<body>
-		<script>
-			d3.csv("drawing-tag.csv", function(data) {
+
+			d3.csv("./data/drawing-tag.csv", function(data) {
 				//Define basic variables
 				var margin = {top: 50, right: 50, bottom: 50, left: 50};
 				var width = window.innerWidth - margin.right - margin.left;
@@ -317,6 +308,3 @@
 					})
 					.attr("stroke", "#847385");
 			});
-		</script>
-	</body>
-</html>
