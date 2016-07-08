@@ -43,11 +43,11 @@
 					array_degree.push(value);
 				});
 
-				var rScale = d3.scale.sqrt()
+				var rScale = d3.scale.pow()
 					.domain(d3.extent(array_degree))
 					.range([r_min, r_max]);
 
-				var tScale = d3.scale.sqrt()
+				var tScale = d3.scale.pow()
 					.domain(d3.extent(array_degree))
 					.range([t_min, t_max]);
 
@@ -213,19 +213,19 @@
 					});
 
 				//Append nodes for tags
-				tag_g.append("circle")
-					.attr("cx", function(d) {
-						return d.values.cx;
-					})
-					.attr("cy", function(d) {
-						return d.values.cy;
-					})
-					.attr("r", function(d) {
-						return rScale(d.values.tag_count);
-					})
-					.attr("fill", function(d) {
-						return d.values.colour_circle;
-					});
+//				tag_g.append("circle")
+//					.attr("cx", function(d) {
+//						return d.values.cx;
+//					})
+//					.attr("cy", function(d) {
+//						return d.values.cy;
+//					})
+//					.attr("r", function(d) {
+//						return rScale(d.values.tag_count);
+//					})
+//					.attr("fill", function(d) {
+//						return d.values.colour_circle;
+//					});
 
 				tag_g.append("text")
 					.text(function(d) {
@@ -238,7 +238,7 @@
 						return d.values.cy;
 					})
 					.attr("dy", function(d) {
-						var selector = "g.tag_num_" + d.values.tag_num + " circle";
+						var selector = "g.tag_num_" + d.values.tag_num;
 						return document.querySelector(selector).getAttribute("r") / 2;
 					})
 					.attr("text-anchor", "middle")
