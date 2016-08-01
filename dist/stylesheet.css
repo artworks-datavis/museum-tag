@@ -2,7 +2,6 @@
 	font-family: NanumBarunGothicOTF, sans-serif;
 }
 
-
 .drawing circle {
 	fill: #335600;
 }
@@ -24,23 +23,35 @@ line {
 	pointer-events: none;
 }
 
+.graph-area {
+	width: 60vw;
+	height: 90vh;
+	display: inline-block;
+}
+
+svg#container {
+	width: 100%;
+	height: 100%;
+}
+
 .tooltip-area {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
+	position: relative;
+	/*top: 0;
+	left: 0;*/
+	width: 33vw;
+	display: inline-block;
 }
 
 .tooltip {
 	display: none;
 	background-color: #777777;
 	/*pointer-events: none;*/
-	position: relative;
+	position: absolute;
 	color: cyan;
 	border-radius: 5px;
 	opacity: 0.3;
 	overflow: hidden;
-	width: 720px;
+	width: 30vw;
 	height: 450px;
 	margin: auto;
 }
@@ -48,6 +59,7 @@ line {
 .tooltip iframe {
 	position: relative;
 	transform: scale(0.5);
+	transform-origin: left;
 }
 
 .show {

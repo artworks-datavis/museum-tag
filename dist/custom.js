@@ -10,15 +10,14 @@
 
 				//Define basic variables
 				var margin = {top: 50, right: 50, bottom: 50, left: 50};
-				var width = window.innerWidth - margin.right - margin.left;
-				var height = (width + margin.right + margin.left) * 3 / 4 - margin.top - margin.bottom;
+				//var width = window.innerWidth - margin.right - margin.left;
+				//var height = (width + margin.right + margin.left) * 3 / 4 - margin.top - margin.bottom;
 
 				//Draw canvas
-				var svg = d3.select("body")
-					.append("svg")
-					.attr("id", "container")
-					.attr("width", width + margin.right + margin.left)
-					.attr("height", height + margin.top + margin.bottom);
+				var svg = d3.select("svg#container");
+
+				var width = Number(svg.style("width").match(/^[\d]+/)) - margin.right - margin.left;
+				var height = Number(svg.style("height").match(/^[\d]+/)) - margin.top - margin.bottom;
 
 				//Convert drawing codes into numbers
 				data.forEach(function(d) {
@@ -180,9 +179,8 @@
 					.attr("r", r_basic);
 
 				//Implemnet tooltip
-				var tooltip_drawing = d3.select("body")
-					.append("div")
-					.attr("class", "tooltip-area")
+				var tooltip_drawing = d3.select("div.tooltip-area")
+					.style("top", -height + "px")
 					.selectAll(".tooltip")
 					.data(nodes_drawing)
 					.enter()
@@ -195,12 +193,12 @@
 					})
 					.style("top", function(d) {
 						return d.values.cy + "px";
-					})*/
-					.style("top", cy_drawing + 100 + "px");
+					})
+					.style("top", cy_drawing + 100 + "px")*/;
 
 				var trickOffset = 450;
 				tooltip_drawing.append("iframe")
-					.attr("width", "720px")
+					.attr("width", "200%")
 					.attr("height", 450 + trickOffset + "px")
 					.attr("scrolling", "yes")
 					.style("top", -trickOffset + "px")
