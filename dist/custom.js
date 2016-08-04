@@ -9,7 +9,7 @@
 				});
 
 				//Define basic variables
-				var margin = {top: 50, right: 50, bottom: 50, left: 50};
+				var margin = {top: 30, right: 70, bottom: 30, left: 70};
 				//var width = window.innerWidth - margin.right - margin.left;
 				//var height = (width + margin.right + margin.left) * 3 / 4 - margin.top - margin.bottom;
 
@@ -72,7 +72,7 @@
 						var cx, cy;
 
 						leaf.title_num > half_of_number ? (
-							cx = margin.left + (leaf.title_num - 1 - half_of_number) * h_int, cy = height - cy_drawing
+							cx = margin.left + (leaf.title_num - 1 - half_of_number) * h_int, cy = height + margin.bottom - cy_drawing
 							) : (
 							cx = margin.left + (leaf.title_num - 1) * h_int, cy = cy_drawing
 							);
@@ -95,14 +95,14 @@
 				// console.log(temporary);
 
 				//make nodes data for tags
-				var area_margin = 50;
+				var area_margin = margin.top;
 				var tags_width = width;
 				var tags = {
 					"x0": margin.left,
 					"x1": margin.left + Math.round(tags_width / 2),
 					"x2": margin.left + tags_width,
 					"y0": cy_drawing + area_margin,
-					"y1": height - cy_drawing - area_margin
+					"y1": height + margin.bottom - cy_drawing - area_margin
 				};
 
 				var nodes_tag = nest_tag.rollup(function(leaves) {
@@ -270,6 +270,9 @@
 					.attr("text-anchor", "middle")
 					.attr("font-size", function(d) {
 						return tScale(d.values.tag_count);
+					})
+					.attr("dy", function(d) {
+						return tScale(d.values.tag_count) / 2;
 					})
 					.attr("fill", function(d) {
 						return d.values.colour_text;
