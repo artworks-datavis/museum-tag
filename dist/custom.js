@@ -225,13 +225,13 @@
 						d3.select(this)
 							.classed(showing_class);
 					})
-					/*.on("mouseout", function(d) {
+					.on("mouseout", function(d) {
 						d3.select("div" + d.values.selector)
 							.classed(hiding_class);
 
 						d3.select(this)
 							.classed(hiding_class);
-					})*/
+					})
 					.on("click", function(d) {
 						console.log(this);
 						document.querySelector("div" + d.values.selector).classList.toggle("fix");
