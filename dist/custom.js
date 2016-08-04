@@ -180,7 +180,7 @@
 
 				//Implemnet tooltip
 				var tooltip_drawing = d3.select("div.tooltip-area")
-					.style("top", -height + "px")
+					.style("top", -margin.bottom - 50 + "px")
 					.selectAll(".tooltip")
 					.data(nodes_drawing)
 					.enter()
