@@ -199,9 +199,9 @@
 				var trickOffset = 450;
 				tooltip_drawing.append("iframe")
 					.attr("width", "200%")
-					.attr("height", 450 + trickOffset + "px")
+					.attr("height", trickOffset * 3.25 + "px")
 					.attr("scrolling", "yes")
-					.style("top", -trickOffset + "px")
+					.style("top", -trickOffset * 1.25 + "px")
 					.attr("frameborder", "0");
 
 				/*tooltip_drawing.append("p")
