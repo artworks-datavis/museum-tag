@@ -1,4 +1,6 @@
 
+			var d_clicked = 0; 
+			
 			d3.csv("./data/drawing-tag.csv", function(data) {
 				var blocking = [1];
 				var urlData = [];
@@ -339,25 +341,31 @@
 				drawing_g.on("click", function(d_drawing) {
 					document.querySelector("div" + d_drawing.values.selector).classList.toggle("fix");
 					this.classList.toggle("fix");
-					
-					d3.selectAll(".activated")
-						.classed("activated", false);
 
-					let thisNode = this;
-					let activeLinks = links.filter(function(d_link) {
-						return thisNode.classList.contains("title_num_" + d_link.title_num);
-					});
-					
-					let activeTagNums = [];
+					if (d_clicked === 0) {
+						let thisNode = this;
+						let activeLinks = links.filter(function(d_link) {
+							return thisNode.classList.contains("title_num_" + d_link.title_num);
+						});
+						
+						let activeTagNums = [];
+						
+						activeLinks.each(function(d_link) {
+							activeTagNums.push(d_link.tag_num);
+							this.classList.add("activated");
+						});
 
-					activeLinks.each(function(d_link) {
-						activeTagNums.push(d_link.tag_num);
-						this.classList.toggle("activated");
-					});
+						activeTagNums.forEach(function(element) {
+							document.querySelector("svg g.tag_num_" + element).classList.add("activated");
+						});
 
-					activeTagNums.forEach(function(element) {
-						document.querySelector("svg g.tag_num_" + element).classList.toggle("activated");
-					});
+						d_clicked = 1;
+					} else if (d_clicked === 1) {
+						d3.selectAll(".activated")
+							.classed("activated", false);
+						
+						d_clicked = 0;
+					}
 				});
 
 				/*d3.csv("./data/drawing-tag-fetch.csv", function(urlData) {
