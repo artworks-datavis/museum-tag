@@ -47,7 +47,6 @@ svg#container {
 .tooltip {
 	display: none;
 	position: absolute;
-	border-radius: 30px;
 	overflow: hidden;
 	opacity: 1 !important;
 	width: 100%;
