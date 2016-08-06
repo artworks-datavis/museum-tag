@@ -213,14 +213,17 @@
 
 				//Mouse events of drawing_g
 				drawing_g.on("mouseover", function(d) {
-						d3.select("div" + d.values.selector)
-							.classed(showing_class)
-							.select("iframe")
-							.attr("src", function(d) {
-								return urlData.filter(function(element) {
-									return element.title_num == d.values.title_num;
-								})[0].url;
-							});
+						var activeDiv = d3.select("div" + d.values.selector)
+							.classed(showing_class);
+
+						if(activeDiv.select("iframe").attr("src") === null) {
+							activeDiv.select("iframe")
+								.attr("src", function(d) {
+									return urlData.filter(function(element) {
+										return element.title_num == d.values.title_num;
+									})[0].url;
+								});
+						}
 
 						d3.select(this)
 							.classed(showing_class);
