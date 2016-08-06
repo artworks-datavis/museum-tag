@@ -1,5 +1,6 @@
 
-			var d_clicked = 0; 
+			var d_clicked = 0;
+			var t_clicked = 0;
 			
 			d3.csv("./data/drawing-tag.csv", function(data) {
 				var blocking = [1];
@@ -365,6 +366,35 @@
 							.classed("activated", false);
 						
 						d_clicked = 0;
+					}
+				});
+
+				tag_g.on("click", function(d_tag) {
+					this.classList.toggle("fix");
+
+					if (t_clicked === 0) {
+						let thisNode = this;
+						let activeLinks = links.filter(function(d_link) {
+							return thisNode.classList.contains("tag_num_" + d_link.tag_num);
+						});
+						
+						let activeTitleNums = [];
+						
+						activeLinks.each(function(d_link) {
+							activeTitleNums.push(d_link.title_num);
+							this.classList.add("activated");
+						});
+
+						activeTitleNums.forEach(function(element) {
+							document.querySelector("svg g.title_num_" + element).classList.add("activated");
+						});
+
+						t_clicked = 1;
+					} else if (t_clicked === 1) {
+						d3.selectAll(".activated")
+							.classed("activated", false);
+						
+						t_clicked = 0;
 					}
 				});
 
