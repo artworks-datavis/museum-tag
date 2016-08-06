@@ -167,7 +167,7 @@
 				var showing_class = {"show": true};
 
 				//Append nodes for drawings
-				var r_basic = 10;
+				var r_basic = 5;
 
 				drawing_g.append("circle")
 					.attr("cx", function(d){
@@ -231,11 +231,6 @@
 
 						d3.select(this)
 							.classed(hiding_class);
-					})
-					.on("click", function(d) {
-						console.log(this);
-						document.querySelector("div" + d.values.selector).classList.toggle("fix");
-						this.classList.toggle("fix");
 					});
 
 				//Append nodes for tags
@@ -339,6 +334,9 @@
 					.attr("stroke", "#666");
 
 				drawing_g.on("click", function(d_drawing) {
+					document.querySelector("div" + d_drawing.values.selector).classList.toggle("fix");
+					this.classList.toggle("fix");
+					
 					d3.selectAll(".activated")
 						.classed("activated", false);
 
