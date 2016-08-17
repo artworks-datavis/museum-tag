@@ -339,9 +339,15 @@
 					})
 					.attr("stroke", "#666");
 
+				// click callback of drawing_g
 				drawing_g.on("click", function(d_drawing) {
 					document.querySelector("div" + d_drawing.values.selector).classList.toggle("fix");
 					this.classList.toggle("fix");
+
+					d3.selectAll(".activated")
+						.classed("activated", false);
+					d3.selectAll("g.drawing.fix")
+						.classed("fix", false);
 
 					if (d_clicked === 0) {
 						let thisNode = this;
@@ -355,6 +361,8 @@
 							activeTagNums.push(d_link.tag_num);
 							this.classList.add("activated");
 						});
+						this.classList.add("activated");
+						this.classList.add("fix");
 
 						activeTagNums.forEach(function(element) {
 							document.querySelector("svg g.tag_num_" + element).classList.add("activated");
@@ -362,13 +370,12 @@
 
 						d_clicked = 1;
 					} else if (d_clicked === 1) {
-						d3.selectAll(".activated")
-							.classed("activated", false);
 						
 						d_clicked = 0;
 					}
 				});
 
+				// click callback of tag_g
 				tag_g.on("click", function(d_tag) {
 					this.classList.toggle("fix");
 
