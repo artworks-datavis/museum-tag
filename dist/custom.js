@@ -180,6 +180,13 @@
 						return d.values.cy;
 					})
 					.attr("r", r_basic);
+				
+				drawing_g.append("text")
+					.attr("x", function(d) { return d.values.cx; })
+					.attr("y", function(d) { return d.values.cy; })
+					.text(function(d) { return d.values.title; })
+					.attr("font-size", "12px")
+					.attr("transform", function(d) { return "rotate(-45 " + d.values.cx + " " + d.values.cy + ")"; });
 
 				//Implemnet tooltip
 				var tooltip_drawing = d3.select("div.tooltip-area")
@@ -341,6 +348,12 @@
 
 				// click callback of drawing_g
 				drawing_g.on("click", function(d_drawing) {
+					let arrayForLock = [];
+					
+					if (this.classList.contains("fix")) {
+						d_clicked = 0;
+					}
+					
 					document.querySelector("div" + d_drawing.values.selector).classList.toggle("fix");
 					this.classList.toggle("fix");
 
@@ -348,6 +361,8 @@
 						.classed("activated", false);
 					d3.selectAll("g.drawing.fix")
 						.classed("fix", false);
+					
+					arrayForLock.forEach(function(element) {});
 
 					if (d_clicked === 0) {
 						let thisNode = this;
