@@ -114,7 +114,7 @@
 						var colour_circle, colour_text;
 						var circle_explain = "#AA3356";
 						var circle_analysis = "#000088";
-						var text_explain = "#008800";
+						var text_explain = "#f0b5a3";
 						var text_analysis = "#234567";
 
 						cy = tags.y0 + (tags.y1 - tags.y0) * Math.random();
