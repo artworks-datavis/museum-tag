@@ -89,3 +89,7 @@ svg g.activated {
 svg g.activated text {
 	fill: darken(inherit, 70);
 }
+
+svg g.drawing text {
+	font-size: 8px;
+}

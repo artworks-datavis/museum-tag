@@ -185,8 +185,13 @@
 					.attr("x", function(d) { return d.values.cx; })
 					.attr("y", function(d) { return d.values.cy; })
 					.text(function(d) { return d.values.title; })
-					.attr("font-size", "12px")
-					.attr("transform", function(d) { return "rotate(-45 " + d.values.cx + " " + d.values.cy + ")"; });
+					//.attr("font-size", "12px")
+					.attr("transform", function(d) { 
+						let degree = d.values.title_num > half_of_number ? 45 : -45;
+						return "rotate(" + degree + " " + d.values.cx + " " + d.values.cy + ")";
+					})
+					.attr("dx", 8)
+					.attr("dy", function(d) { return d.values.title_num > half_of_number ? 8 : -4; });
 
 				//Implemnet tooltip
 				var tooltip_drawing = d3.select("div.tooltip-area")
