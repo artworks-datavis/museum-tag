@@ -358,18 +358,20 @@
 					if (this.classList.contains("fix")) {
 						d_clicked = 0;
 					}
+
 					
-					document.querySelector("div" + d_drawing.values.selector).classList.toggle("fix");
+
 					this.classList.toggle("fix");
 
 					d3.selectAll(".activated")
 						.classed("activated", false);
 					d3.selectAll("g.drawing.fix")
 						.classed("fix", false);
-					
+					d3.selectAll("div.tooltip-area .tooltip")
+						.classed("fix", false);
 					arrayForLock.forEach(function(element) {});
 
-					if (d_clicked === 0) {
+					if (!this.classList.contains("clicked")) {
 						let thisNode = this;
 						let activeLinks = links.filter(function(d_link) {
 							return thisNode.classList.contains("title_num_" + d_link.title_num);
@@ -389,10 +391,16 @@
 						});
 
 						d_clicked = 1;
-					} else if (d_clicked === 1) {
+						document.querySelector("div" + d_drawing.values.selector).classList.add("fix");
+						
+					} else {
+						document.querySelector("div" + d_drawing.values.selector).classList.remove("fix");
 						
 						d_clicked = 0;
 					}
+					//toggle clicked
+					this.classList.toggle("clicked");
+					
 				});
 
 				// click callback of tag_g
