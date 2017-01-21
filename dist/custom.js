@@ -12,7 +12,7 @@
 				});
 
 				//Define basic variables
-				var margin = {top: 30, right: 70, bottom: 30, left: 70};
+				var margin = {top: 32, right: 60, bottom: 32, left: 60};
 				//var width = window.innerWidth - margin.right - margin.left;
 				//var height = (width + margin.right + margin.left) * 3 / 4 - margin.top - margin.bottom;
 
@@ -114,7 +114,7 @@
 						var colour_circle, colour_text;
 						var circle_explain = "#AA3356";
 						var circle_analysis = "#000088";
-						var text_explain = "#f0b5a3";
+						var text_explain = "#D86150";
 						var text_analysis = "#234567";
 
 						cy = tags.y0 + (tags.y1 - tags.y0) * Math.random();
@@ -195,7 +195,7 @@
 
 				//Implemnet tooltip
 				var tooltip_drawing = d3.select("div.tooltip-area")
-					.style("top", -margin.bottom - 50 + "px")
+					.style("top", -margin.bottom - 40 + "px")
 					.selectAll(".tooltip")
 					.data(nodes_drawing)
 					.enter()
@@ -214,7 +214,7 @@
 				var trickOffset = 450;
 				tooltip_drawing.append("iframe")
 					.attr("width", "200%")
-					.attr("height", trickOffset * 3.25 + "px")
+					.attr("height", trickOffset * 3.35 + "px")
 					.attr("scrolling", "yes")
 					.style("top", -trickOffset * 1.25 + "px")
 					.attr("frameborder", "0");
@@ -349,7 +349,7 @@
 					.attr("y2", function(d) {
 						return d.y2;
 					})
-					.attr("stroke", "#666");
+					.attr("stroke", "#B5B5B4");
 
 				// click callback of drawing_g
 				drawing_g.on("click", function(d_drawing) {

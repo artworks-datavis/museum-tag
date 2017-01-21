@@ -4,7 +4,8 @@
 
 body {
 	cursor: pointer;
-}
+}요
+
 
 .drawing circle {
 	fill: #035572;
@@ -25,8 +26,8 @@ line {
 }
 
 .graph-area {
-	width: 65vw;
-	height: 90vh;
+	width: 67vw;
+	height: 80vh;
 	display: inline-block;
 }
 
@@ -37,12 +38,12 @@ svg#container {
 
 .tooltip-area {
 	position: relative;
-	top: 0;
-	left: 0;
+/* 	top: 0;
+	left: 0; */
 	width: 27vw;
 	height: 72vh;
 	display: inline-block;
-	background-color: #eee;
+	background-color: #f2f2f2;
 	-webkit-box-shadow: 6px 9px 33px -17px rgba(0,0,0,0.7);
 	-moz-box-shadow: 6px 9px 33px -17px rgba(0,0,0,0.7);
 	box-shadow: 6px 9px 33px -17px rgba(0,0,0,0.7);
@@ -87,9 +88,10 @@ svg g.activated {
 }
 
 svg g.activated text {
-	fill: darken(inherit, 70);
+	fill: darken(inherit, 80);
 }
 
 svg g.drawing text {
-	font-size: 8px;
+	font-size: 7px;
 }
+
